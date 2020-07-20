@@ -1,19 +1,214 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>TipsNote : GitHub Pages Sample</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/marx/2.0.4/marx.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>着せ替えさぼちゅーばー！</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="all">
+  <link rel="stylesheet" href="css/dress_up.css" type="text/css" media="all">
 </head>
 
 <body>
-<main>
-  <h1>GitHub Pages のサンプルです</h1>
-  <a href="http://www.tam-tam.co.jp/tipsnote/"><button>TipsNote に戻る</button></a>
-</main>
+  <header class="mb-40">
+    <h1 class="mb-0"><img src="img/common/logo_w.png" alt="さぼてんch" class="logo"></h1>
+  </header>
 
-<script>
-console.log('GitHub Pages Sample');
-</script>
-</body>
-</html>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div id="canvas-wrap">
+            <canvas id="dress_room"></canvas>
+          </div>
+        </div>
+
+        <div class="col-6">
+
+          <ul class="nav nav-tabs">
+            <li class="nav-item active">
+              <a href="#emote" class="nav-link" data-toggle="tab">エモート</a>
+            </li>
+            <li class="nav-item">
+              <a href="#hair" class="nav-link" data-toggle="tab">髪の毛</a>
+            </li>
+            <li class="nav-item">
+              <a href="#accessory_neck" class="nav-link" data-toggle="tab">装飾(首)</a>
+            </li>
+            <li class="nav-item">
+              <a href="#gloves" class="nav-link" data-toggle="tab">グローブ</a>
+            </li>
+            <li class="nav-item">
+              <a href="#jacket" class="nav-link" data-toggle="tab">上着</a>
+            </li>
+            <li class="nav-item">
+              <a href="#shirt" class="nav-link" data-toggle="tab">シャツ</a>
+            </li>
+            <li class="nav-item">
+              <a href="#shoes" class="nav-link" data-toggle="tab">靴</a>
+            </li>
+            <li class="nav-item">
+              <a href="#inner" class="nav-link" data-toggle="tab">インナー</a>
+            </li>
+            <li class="nav-item">
+              <a href="#accessory_head" class="nav-link" data-toggle="tab">装飾(頭)</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="emote" class="tab-pane active">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="emote" value="none"><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="emote" value="01_one_point_hoppe" checked><span>ほっぺ</span></label>
+              </div>
+              <div>
+                <label>不透明度：</label>
+                <input type="range" name="emote" value="100" min="0" max="100" step="1" oninput="alphaSlider('emote',this.value)">
+                <output id="emote_alpha">100</output>
+              </div>
+            </div>
+
+            <div id="hair" class="tab-pane">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="hair$" value="01_normal" checked><span>いつもの</span></label>
+                <label class="input-tag"><input type="radio" name="hair$" value="01_normal_bk"><span>いつもの(黒)</span></label>
+              </div>
+            </div>
+
+            <div id="accessory_neck" class="tab-pane">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="accessory_neck$" value="none"><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="accessory_neck$" value="01_normal_muffler" checked><span>いつものマフラー</span></label>
+              </div>
+              <div>
+                <label>不透明度：</label>
+                <input type="range" name="accessory_neck$" value="100" min="0" max="100" step="1" oninput="alphaSlider('accessory_neck$',this.value)">
+                <output id="accessory_neck$_alpha">100</output>
+              </div>
+            </div>
+
+            <div id="gloves" class="tab-pane">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="gloves" value="none"><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="gloves" value="01_normal" checked><span>いつもの</span></label>
+              </div>
+              <div>
+                <label>不透明度：</label>
+                <input type="range" name="gloves" value="100" min="0" max="100" step="1" oninput="alphaSlider('gloves',this.value)">
+                <output id="gloves_alpha">100</output>
+              </div>
+            </div>
+
+            <div id="jacket" class="tab-pane">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="jacket$" value="none"><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="jacket$" value="01_normal" checked><span>いつもの</span></label>
+                <label class="input-tag"><input type="radio" name="jacket$" value="01_normal_open"><span>いつもの(開)</span></label>
+                <label class="input-tag"><input type="radio" name="jacket$" value="01_normal_fc"><span>いつもの(FC)</span></label>
+                <label class="input-tag"><input type="radio" name="jacket$" value="01_normal_fc_open"><span>いつもの(FC開)</span></label>
+              </div>
+              <div>
+                <label>不透明度：</label>
+                <input type="range" name="jacket$" value="100" min="0" max="100" step="1" oninput="alphaSlider('jacket$',this.value)">
+                <output id="jacket$_alpha">100</output>
+              </div>
+            </div>
+            <div id="shirt" class="tab-pane">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="shirt$" value="none"><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="shirt$" value="01_normal_wh" checked><span>白T</span></label>
+                <label class="input-tag"><input type="radio" name="shirt$" value="01_normal_wh_dasa01"><span>白T(1/512)</span></label>
+              </div>
+              <div>
+                <label>不透明度：</label>
+                <input type="range" name="shirt$" value="100" min="0" max="100" step="1" oninput="alphaSlider('shirt$',this.value)">
+                <output id="shirt$_alpha">100</output>
+              </div>
+            </div>
+
+            <div id="shoes" class="tab-pane">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="shoes" value="none"><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="shoes" value="01_normal_boots" checked><span>いつもの</span></label>
+              </div>
+              <div>
+                <label>不透明度：</label>
+                <input type="range" name="shoes" value="100" min="0" max="100" step="1" oninput="alphaSlider('shoes',this.value)">
+                <output id="shoes_alpha">100</output>
+              </div>
+            </div>
+
+            <div id="inner" class="tab-pane">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="inner_t" value="none" disabled><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="inner_t" value="01_normal_gr"><span>上1(緑)</span></label>
+                <label class="input-tag"><input type="radio" name="inner_t" value="01_normal_bk"><span>上1(黒)</span></label>
+                <label class="input-tag"><input type="radio" name="inner_t" value="01_normal_ye"><span>上1(黄)</span></label>
+                <label class="input-tag"><input type="radio" name="inner_t" value="02_drawers_gr" checked><span>上2(緑)</span></label>
+                <label class="input-tag"><input type="radio" name="inner_t" value="02_drawers_ye"><span>上2(黄)</span></label>
+              </div>
+
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="inner_b" value="none" disabled><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="inner_b" value="01_normal_gr" checked><span>下1(緑)</span></label>
+                <label class="input-tag"><input type="radio" name="inner_b" value="01_normal_bk"><span>下1(黒)</span></label>
+                <label class="input-tag"><input type="radio" name="inner_b" value="01_normal_ye"><span>下1(黄)</span></label>
+                <label class="input-tag"><input type="radio" name="inner_b" value="02_drawers_gr" checked><span>下2(緑)</span></label>
+                <label class="input-tag"><input type="radio" name="inner_b" value="02_drawers_ye"><span>下2(黄)</span></label>
+              </div>
+
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="inner" value="none" checked disabled><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="inner" value="01_swimwear"><span>こどもの水着</span></label>
+              </div>
+
+            </div>
+
+            <div id="accessory_head" class="tab-pane">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="accessory_head" value="none"><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="accessory_head" value="01_normal_cap" checked><span>いつもの帽子</span></label>
+              </div>
+              <div>
+                <label>不透明度：</label>
+                <input type="range" name="accessory_head" value="100" min="0" max="100" step="1" oninput="alphaSlider('accessory_head',this.value)">
+                <output id="accessory_head_alpha">100</output>
+              </div>
+            </div>
+          </div>
+
+
+          <div>
+            <input type="button" value="デフォルト" id="btn-test" />
+          </div>
+
+          <div>
+            <input type="button" value="合成" id="btn-concat" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12">
+          <p>&copy;2020 仙人掌</p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- 合成結果用のcanvas -->
+  <canvas id="result" width="200" height="170" style="display:none"></canvas>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+  <script src="js/main.js"></script>
+</body></html>

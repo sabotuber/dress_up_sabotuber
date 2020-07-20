@@ -1,0 +1,519 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", "Meiryo", Sans-Serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-size-adjust: 100%;
+  color: #34495e;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+small {
+  font-size: 1.2rem;
+  color: #c0c1c2;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+}
+
+ul > li {
+  position: relative;
+  font-size: 1.6rem;
+}
+
+header {
+  background-color: #34495e;
+  padding: 0.4rem 1.5rem;
+}
+
+header > h1 > .logo {
+  height: 4.2rem;
+}
+
+footer {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #ffffff;
+  background-color: #34495e;
+  padding: 0.4rem 0;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+.pr-ico {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  transition: .5s;
+  border: 0.8rem solid #34495e;
+  overflow: hidden;
+  width: 20rem;
+  max-width: 100%;
+  font-size: 0;
+}
+
+.pr-ico::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  transition: .5s;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  padding: 9.2rem 0;
+  background-color: #ffffff;
+  opacity: 0;
+}
+
+.pr-ico:hover::after {
+  content: "@sabotuber";
+  color: #34495e;
+  transition: .5s;
+  opacity: 0.5;
+}
+
+.pr-name > span {
+  display: inline-block;
+  width: 100%;
+}
+
+.pr-name > span:first-child {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.pr-name > span:last-child {
+  font-weight: 600;
+}
+
+.h-t1 {
+  position: relative;
+}
+
+.h-t1::before {
+  content: "";
+  display: block;
+  width: 30%;
+  height: 0.3rem;
+  position: absolute;
+  bottom: -0.3rem;
+  left: 0;
+  background-color: #6b8a79;
+}
+
+.h-t1::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 0.3rem;
+  position: absolute;
+  bottom: -0.3rem;
+  right: 0;
+  background-color: #e7ba82;
+}
+
+.h-t1 > span {
+  display: inline-block;
+  color: #34495e;
+  position: relative;
+  padding: 0 3rem;
+}
+
+.h-t1 > span::before {
+  content: "";
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: #888888;
+  box-shadow:
+    0.8rem -0.8rem #888888,
+    0.8rem 0.8rem #888888,
+    1.6rem 0rem #888888,
+    0.8rem 0rem #888888;
+  position: absolute;
+  top: 1.1rem;
+  left: 0;
+}
+
+.h-t1 > span::after {
+  content: "";
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 0.8rem;
+  background: #b03c27;
+  box-shadow:
+    0.8rem -0.8rem #406ea4,
+    0.8rem 0.8rem #ecb24b,
+    1.6rem 0rem #4fba88;
+  position: absolute;
+  top: 1.1rem;
+  right: 1.8rem;
+}
+
+.h-t1 > span > span {
+  display: inline-block;
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: 600;
+}
+
+.h-t1 > span > span:last-child {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+}
+
+.h-t2 {
+  position: relative;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 600;
+  border-left: 0.6rem solid #6b8a79;
+  padding-left: 0.8rem;
+}
+
+.h-t2 > span {
+  position: relative;
+  display: inline-block;
+}
+
+.h-t2 > span::before {
+  content: "";
+  position: absolute;
+  right: -1.6rem;
+  top: 0.4rem;
+  display: inline-block;
+  height: 1.6rem;
+  width: 0.4rem;
+  border-radius: 1rem;
+  background: #888888;
+  transform: rotate(30deg);
+}
+
+.h-t2 > span::after {
+  content: "";
+  position: absolute;
+  right: -2.4rem;
+      top: 0.4rem;
+  display: inline-block;
+  height: 1.6rem;
+  width: 0.4rem;
+  border-radius: 1rem;
+  background: #888888;
+  transform: rotate(30deg);
+}
+
+.faq-list {
+  font-size: 0;
+}
+
+.faq-list > dt {
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding-left: 3rem;
+  color: #6b8a79;
+}
+
+.faq-list > dt::before {
+  color: #6b8a79;
+}
+
+.faq-list > dd {
+  position: relative;
+  font-size: 1.6rem;
+  padding-left: 3rem;
+}
+
+.faq-list > dd::before {
+  color: #e7ba82;
+}
+
+.faq-list > .is-q::before {
+  content: "Q,";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0.6rem;
+  font-weight: 600;
+}
+
+.faq-list > .is-a::before {
+  content: "A,";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0.6rem;
+  font-weight: 600;
+}
+
+.ic-good {
+  padding-left: 2rem;
+}
+
+.ic-good::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f164";
+  display: inline-block;
+  color: #34495e;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ic-bad {
+  padding-left: 2rem;
+}
+
+.ic-bad::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f165";
+  display: inline-block;
+  color: #34495e;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ic-star {
+  padding-left: 2rem;
+}
+
+.ic-star::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f005";
+  display: inline-block;
+  color: #34495e;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0.4rem;
+  height: 100%;
+  background: #6b8a79;
+  border-radius: 0.4rem;
+  left: 1rem;
+  top: 0;
+}
+
+.timeline > li {
+  position: relative;
+  padding-left: 3rem;
+  font-size: 0;
+}
+
+.timeline > li::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background: #6b8a79;
+  border-radius: 2rem;
+  position: absolute;
+  left: 0.2rem;
+  top: 0;
+}
+
+.timeline > li::after {
+  content: "";
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: #ffffff;
+  border-radius: 2rem;
+  position: absolute;
+  left: 0.7rem;
+  top: 0.5rem;
+}
+
+.timeline > li > time {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+.timeline > li > p {
+  display: inline-block;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+.timeline > li > small {
+  display: inline-block;
+  width: 100%;
+}
+
+
+
+
+.sns-link {
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+}
+
+.sns-link > li {
+  display: inline-block;
+}
+
+.sns-link > li:not(:last-child) {
+  padding-right: 0.8rem;
+}
+
+.sns-link > li > a {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  transition: .5s;
+  border-radius: 50%;
+  position: relative;
+  font-size: 3rem;
+  text-decoration: none;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.sns-link > li > a:hover {
+  transition: .5s;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.sns-link > li > a::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  transition: 0.5s;
+  background: #34495e;
+}
+
+.sns-link > li > a:hover:before {
+  opacity: 0;
+}
+
+.sns-link > li > a::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -2;
+  left: 0;
+}
+
+.sns-link > li > a.ic-tw::after {
+  background: linear-gradient(135deg, #13f1fc 0%, #0470dc 100%);
+}
+
+.sns-link > li > a.ic-yt::after {
+  background: linear-gradient(135deg, #f5515f 0%, #c9293c 100%);
+}
+
+.sns-link > li > a.ic-gh:hover {
+  background: #34495e;
+  opacity: 0.6;
+}
+
+.sns-link > li > a > i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.mb-10 {
+  margin-bottom: 1rem;
+}
+
+.mb-20 {
+  margin-bottom: 2rem;
+}
+
+.mb-40 {
+  margin-bottom: 4rem;
+}
+
+.f-impact {
+  font-family: 'Impact', 'Anton', sans-serif;
+}
+
+
+
+/* sm */
+@media (min-width: 576px) {}
+
+/* md */
+@media (min-width: 768px) {
+  .pr-name > span:first-child {
+    font-size: 3.2rem;
+  }
+
+  .pr-name > span:last-child {
+    font-size: 2rem;
+  }
+
+  .timeline > li > time {
+    width: auto;
+    margin-right: 1rem;
+  }
+
+  .timeline > li > p {
+    width: auto;
+  }
+}
+
+/* lg */
+@media (min-width: 992px) {}
+
+/* xl */
+@media (min-width: 1200px) {}

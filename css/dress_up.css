@@ -1,0 +1,80 @@
+#canvas-wrap {}
+
+#canvas-wrap > canvas {
+  max-width: 100%;
+}
+
+.input-tag-wrap {
+  font-size: 0;
+}
+
+.input-tag {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0;
+  height: 3rem;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.input-tag > input {
+  display: none;
+}
+
+.input-tag > input + span {
+  display: block;
+  padding: 0 1rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
+  line-height: 3rem;
+  border-radius: 0 0.3rem 0.3rem 0;
+  color: #ffffff;
+  background-color: #34495e;
+}
+
+.input-tag > input + span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -0.8rem;
+  border-style: solid;
+  border-width: 1.5rem 0.8rem 1.5rem 0;
+  border-color: transparent #34495e transparent transparent;
+}
+
+.input-tag > input + span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 0.6rem;
+  width: 0.6rem;
+  background-color: #ffffff;
+  top: 1.2rem;
+  left: -0.3rem;
+  border-radius: 1rem;
+}
+
+.input-tag > input:checked + span {
+  background-color: #6b8a79;
+}
+
+.input-tag > input:checked + span::before {
+  border-color: transparent #6b8a79 transparent transparent;
+}
+
+.input-tag > input:disabled + span {
+  opacity: 0.6;
+}
+
+.input-tag > input:disabled + span::after {
+  opacity: 0.6;
+}
+
+.nav-item{
+  border: 0.1rem #ffffff solid;
+}.nav-item.active{
+  border: 0.1rem #000000 solid;
+}
