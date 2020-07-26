@@ -1,37 +1,3 @@
-/*
-必要となるレイヤー
-
-hair_f
-face
-head
-arm_l
-body
-arm_r
-hair_b
-bg
-
-ラジオ1
-ラジオ2
-ラジオ3
-
-ラジオ3の時は1も2も押せない
-1と2はどちらかが押されている時、両方押されている必要がある
-
-この辺を使って入力を制御
-
-$('input[name=test2]').prop('disabled',true);
-$('input[name=test2]').prop('checked',false);
-
-$('input[name=test2]').prop('disabled',false);
-$('input[name=test2][value=tex2_1]').prop('checked',true);
-
-setStateの時にname属性で分岐処理作る
-今の状態で分岐させないといけないので、フラグを持つ必要がありそう
-
-両立できない組み合わせ、として考えればいい
-flag1にa,b,cどれが入っているか、みたいな
-
-*/
 
 // 状態を管理するオブジェクト
 const state = new Object();
@@ -58,6 +24,8 @@ state.accessory_neck$ = "01_normal_muffler";
 state.shoes = "01_normal_boots";
 state.shirt$ = "01_normal_wh";
 state.shirt = "01_normal_wh";
+state.onepiece$ = "none";
+state.onepiece = "none";
 state.jacket$ = "01_normal";
 state.jacket = "01_normal";
 state.gloves = "01_normal_gloves";
@@ -190,7 +158,10 @@ textureList.accessory_neck_01_normal_muffler = PIXI.Texture.from('img/accessory_
 
 textureList.gloves_01_normal = PIXI.Texture.from('img/gloves/01_normal.png');
 
-// スプライトリスト作成ZZZ
+textureList.onepiece$_01_hirahira = PIXI.Texture.from('img/onepiece$/01_hirahira.png');
+textureList.onepiece_01_hirahira = PIXI.Texture.from('img/onepiece/01_hirahira.png');
+
+// スプライトリスト作成
 const spriteList = new Object();
 // アクセサリー(首後)
 spriteList.accessory_neck$ = new PIXI.Sprite(textureList.accessory_neck$_01_normal_muffler);
@@ -258,6 +229,13 @@ spriteList.shirt$.x = 0;
 spriteList.shirt$.y = 0;
 container.addChild(spriteList.shirt$);
 
+// 服1(後)
+spriteList.onepiece$ = new PIXI.Sprite(textureList.none);
+spriteList.onepiece$.anchor.set(0);
+spriteList.onepiece$.x = 0;
+spriteList.onepiece$.y = 0;
+container.addChild(spriteList.onepiece$);
+
 // 上着(後)
 spriteList.jacket$ = new PIXI.Sprite(textureList.jacket$_01_normal);
 spriteList.jacket$.anchor.set(0);
@@ -279,6 +257,13 @@ spriteList.shirt.anchor.set(0);
 spriteList.shirt.x = 0;
 spriteList.shirt.y = 0;
 container.addChild(spriteList.shirt);
+
+// 服1(前)
+spriteList.onepiece = new PIXI.Sprite(textureList.none);
+spriteList.onepiece.anchor.set(0);
+spriteList.onepiece.x = 0;
+spriteList.onepiece.y = 0;
+container.addChild(spriteList.onepiece);
 
 // 上着(前)
 spriteList.jacket = new PIXI.Sprite(textureList.jacket_01_normal);
@@ -388,7 +373,7 @@ function alphaSlider(target, alpha) {
 }
 
 // 一括変更機能
-$("#btn-test").on('click', function () {
+$("#btn-default").on('click', function () {
   state.setState('inner', 'none');
   state.setState('inner_t', '02_drawers_gr');
   state.setState('inner_b', '02_drawers_gr');
@@ -417,6 +402,10 @@ $("#btn-test").on('click', function () {
   state.setState('shirt$', '01_normal_wh');
   state.setState('shirt', '01_normal_wh');
   $('input[name="shirt$"][value="01_normal_wh"]').prop('checked', true);
+
+  state.setState('onepiece$', 'none');
+  state.setState('onepiece', 'none');
+  $('input[name="onepiece$"][value="none"]').prop('checked', true);
   
   state.setState('jacket$', '01_normal');
   state.setState('jacket', '01_normal');
@@ -425,7 +414,56 @@ $("#btn-test").on('click', function () {
   state.setState('gloves', '01_normal');
   $('input[name="gloves"][value="01_normal"]').prop('checked', true);
   
+  state.setState('accessory_head', '01_normal_cap');
+  $('input[name="accessory_head"][value="01_normal_cap"]').prop('checked', true);
+  
   state.setState('accessory_neck$', '01_normal_muffler');
   state.setState('accessory_neck', '01_normal_muffler');
   $('input[name="accessory_neck$"][value="01_normal_muffler"]').prop('checked', true);
+});
+$("#btn-cast-off").on('click', function () {
+  state.setState('inner', 'none');
+  state.setState('inner_t', '02_drawers_gr');
+  state.setState('inner_b', '02_drawers_gr');
+  innerF = 0;
+  $('input[name="inner"][value="none"]').prop('checked', true);
+  $('input[name="inner_t"][value="02_drawers_gr"]').prop('checked', true);
+  $('input[name="inner_b"][value="02_drawers_gr"]').prop('checked', true);
+  state.setState('hair$', '01_normal');
+  state.setState('arm_r', '01_normal');
+  state.setState('body', '01_normal');
+  state.setState('arm_l', '01_normal');
+  state.setState('head', '01_normal');
+  state.setState('eyebrows', '01_normal');
+  state.setState('eyes', '01_normal');
+  state.setState('mouth', '01_normal');
+  state.setState('hair', '01_normal');
+  $('input[name="hair$"][value="01_normal"]').prop('checked', true);
+  state.setState('emote', '01_one_point_hoppe');
+  $('input[name="emote"][value="01_one_point_hoppe"]').prop('checked', true);
+
+  state.setState('shoes', 'none');
+  $('input[name="shoes"][value="none"]').prop('checked', true);
+
+  state.setState('shirt$', 'none');
+  state.setState('shirt', 'none');
+  $('input[name="shirt$"][value="none"]').prop('checked', true);
+
+  state.setState('onepiece$', 'none');
+  state.setState('onepiece', 'none');
+  $('input[name="onepiece$"][value="none"]').prop('checked', true);
+  
+  state.setState('jacket$', 'none');
+  state.setState('jacket', 'none');
+  $('input[name="jacket$"][value="none"]').prop('checked', true);
+  
+  state.setState('gloves', 'none');
+  $('input[name="gloves"][value="none"]').prop('checked', true);
+  
+  state.setState('accessory_head', 'none');
+  $('input[name="accessory_head"][value="none"]').prop('checked', true);
+  
+  state.setState('accessory_neck$', 'none');
+  state.setState('accessory_neck', 'none');
+  $('input[name="accessory_neck$"][value="none"]').prop('checked', true);
 });

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>着せ替えさぼちゅーばー！</title>
+  <title>着せ替えさぼちゅーばー！|さぼてんch</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/common.css" type="text/css" media="all">
@@ -42,6 +42,9 @@
             </li>
             <li class="nav-item">
               <a href="#jacket" class="nav-link" data-toggle="tab">上着</a>
+            </li>
+            <li class="nav-item">
+              <a href="#onepiece" class="nav-link" data-toggle="tab">服1</a>
             </li>
             <li class="nav-item">
               <a href="#shirt" class="nav-link" data-toggle="tab">シャツ</a>
@@ -114,6 +117,17 @@
                 <output id="jacket$_alpha">100</output>
               </div>
             </div>
+            <div id="onepiece" class="tab-pane">
+              <div class="input-tag-wrap">
+                <label class="input-tag"><input type="radio" name="onepiece$" value="none" checked><span>無</span></label>
+                <label class="input-tag"><input type="radio" name="onepiece$" value="01_hirahira"><span>ひらひらワンピース</span></label>
+              </div>
+              <div>
+                <label>不透明度：</label>
+                <input type="range" name="shirt$" value="100" min="0" max="100" step="1" oninput="alphaSlider('onepiece$',this.value)">
+                <output id="onepiece$_alpha">100</output>
+              </div>
+            </div>
             <div id="shirt" class="tab-pane">
               <div class="input-tag-wrap">
                 <label class="input-tag"><input type="radio" name="shirt$" value="none"><span>無</span></label>
@@ -180,7 +194,10 @@
 
 
           <div>
-            <input type="button" value="デフォルト" id="btn-test" />
+            <input type="button" value="デフォルト" id="btn-default" />
+          </div>
+          <div>
+            <input type="button" value="全解除" id="btn-cast-off" />
           </div>
 
           <div>
